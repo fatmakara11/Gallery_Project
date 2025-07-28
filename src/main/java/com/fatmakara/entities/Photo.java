@@ -1,4 +1,4 @@
-package com.fatmakara.entites;
+package com.fatmakara.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -16,7 +16,7 @@ public class Photo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
 
     @Column(nullable = false)
@@ -26,9 +26,9 @@ public class Photo {
     private String imageUrl;
 
 
- // @ManyToOne
- //@JoinColumn(name=("category_id")
-//    private Category category;
+  @ManyToOne
+ @JoinColumn(name="category_id")
+   private Category category;
 
 
     @Column(length = 1000)
