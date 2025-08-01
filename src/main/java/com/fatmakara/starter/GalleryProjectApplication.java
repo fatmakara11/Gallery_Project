@@ -10,9 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 //@Restcontroller ,Service ,Repository ile işaretlediğimiz classlarımızın conteynerda bean ı oluşmadı
 @ComponentScan(basePackages = {"com.fatmakara"})
-
 @EntityScan(basePackages = {"com.fatmakara.entities"})
-
 @EnableJpaRepositories(basePackages = {"com.fatmakara"})
 
 public class GalleryProjectApplication {
