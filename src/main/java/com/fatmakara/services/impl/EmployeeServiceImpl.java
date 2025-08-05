@@ -1,10 +1,12 @@
 package com.fatmakara.services.impl;
 
+import com.fatmakara.dto.EmployeeFilterRequest;
 import com.fatmakara.entities.Department;
 import com.fatmakara.entities.Employee;
 import com.fatmakara.entities.Team;
 import com.fatmakara.repository.DepartmentRepository;
 import com.fatmakara.repository.EmployeeRepository;
+import com.fatmakara.repository.EmployeeSpecification;
 import com.fatmakara.repository.TeamRepository;
 import com.fatmakara.services.IEmployeeService;
 import org.springframework.stereotype.Service;
@@ -82,6 +84,12 @@ public class EmployeeServiceImpl implements IEmployeeService {
         }
         return null;
     }
+
+    @Override
+    public List<Employee> filterEmployees(EmployeeFilterRequest request) {
+        return employeeRepository.findAll(EmployeeSpecification.filterBy(request));
+    }
+
 
     @Override
     public void deleteEmployee(Integer id) {

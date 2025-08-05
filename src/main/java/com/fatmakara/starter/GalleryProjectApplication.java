@@ -13,7 +13,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages = {"com.fatmakara.entities"})
 @EnableJpaRepositories(basePackages = {"com.fatmakara"})
 
-public class GalleryProjectApplication {
+public class
+GalleryProjectApplication {
     public static void main(String[] args) {
         SpringApplication.run(GalleryProjectApplication.class, args);
     }
