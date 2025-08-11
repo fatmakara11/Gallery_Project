@@ -4,7 +4,6 @@ import com.fatmakara.controller.ITeamController;
 import com.fatmakara.entities.Team;
 import com.fatmakara.services.ITeamService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -41,10 +40,15 @@ public class TeamControllerImpl implements ITeamController {
     public Team updateTeam(@PathVariable Integer id, @RequestBody Team updatedTeam) {
         return teamService.updateTeam(id, updatedTeam);
     }
-
     // Ekip sil
     @DeleteMapping("/{id}")
     public void deleteTeam(@PathVariable Integer id) {
         teamService.deleteTeam(id);
     }
+    @DeleteMapping("/{teamId}/employees/{employeeId}")
+    public void removeEmployeeFromTeam(@PathVariable Integer teamId, @PathVariable Integer employeeId) {
+        teamService.removeEmployeeFromTeam(teamId, employeeId);
+    }
 }
+
+

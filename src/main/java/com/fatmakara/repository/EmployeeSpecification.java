@@ -43,7 +43,6 @@ public class EmployeeSpecification {
             if(request.getContractType() !=null){
                 predicates.add(cb.equal(root.get("contractType"), request.getContractType()));
             }
-
             //SIRALAMA
             List<Order> orders = new ArrayList<>();
             //yaşa göre sıralama(su anki tarih - dogum tarihi)

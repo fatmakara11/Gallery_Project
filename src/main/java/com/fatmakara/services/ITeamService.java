@@ -10,4 +10,5 @@ public interface ITeamService {
     Team getTeamById(Integer id);
     void deleteTeam(Integer id);
     Team updateTeam(Integer id, Team updatedTeam);
+    void removeEmployeeFromTeam(Integer teamId, Integer employeeId);
 }

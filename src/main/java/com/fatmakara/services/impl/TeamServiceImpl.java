@@ -1,5 +1,6 @@
 package com.fatmakara.services.impl;
 
+import com.fatmakara.entities.Employee;
 import com.fatmakara.entities.Team;
 import com.fatmakara.repository.TeamRepository;
 import com.fatmakara.services.ITeamService;
@@ -49,5 +50,22 @@ public class TeamServiceImpl implements ITeamService {
             return teamRepository.save(dbTeam);
         }
         throw new RuntimeException("Takım bulunamadı. ID: " + id);
+    }
+
+    @Override
+    public void removeEmployeeFromTeam(Integer teamId, Integer employeeId) {
+        Team team = teamRepository.findById(teamId)
+                .orElseThrow(() -> new RuntimeException("Team not found"));
+
+        Employee employeeToRemove = team.getEmployees().stream()
+                .filter(emp -> emp.getId().equals(employeeId))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Employee not found in team"));
+
+        team.getEmployees().remove(employeeToRemove);
+        employeeToRemove.setTeam(null); // Employee entity’de team alanını null yap
+
+
+        teamRepository.save(team);
     }
 }

@@ -15,13 +15,13 @@ public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "team_id", nullable = false)
+    @Column(name = "team_id")
     private Integer id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
     // Bir takımda birden çok çalışan olabilir
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Employee> employees = new ArrayList<>();
 }
